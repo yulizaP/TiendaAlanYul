@@ -21,17 +21,19 @@ let categorie = fetch("https://api.mercadolibre.com/categories/MLM1648")
 }).catch(error => console.log(error));
 
 //Nos muestra los items de Computacion en Meli Mexico
+
+let dataItems;
+
 let items = fetch("https://api.mercadolibre.com/sites/MLM/search?category=MLM430687")
 .then(response => {
     response.json().then(
       response =>{
           //console.log(response);
           dataItems = response.results;
-          console.log(dataItems);
-
+          //console.log(dataItems);
           
          mostrarProductos(dataItems);
-         agregarEnCarrito(dataItems)
+        
       }
     );
 }).catch(error => console.log(error));
@@ -41,7 +43,7 @@ let tendencias = fetch("https://api.mercadolibre.com/trends/MLM/MLM1648")
 .then(response => {
     response.json().then(
       response =>{
-          console.log(response);
+          //console.log(response);
       }
     );
 }).catch(error => console.log(error));
@@ -87,7 +89,7 @@ const mostrarProductos=(datosItem)=>{
         let btnComprar=document.createElement('button')
         btnComprar.id=producto.id
         btnComprar.className='btn btn-primary btn-compra'
-        btnComprar.textContent='Comprar'
+        btnComprar.textContent='AGREGAR'
         let clone= contenedorProductos.cloneNode(true)
         clone.id=i+1;
         clone.appendChild(imagen)
@@ -112,4 +114,26 @@ const mostrarProductos=(datosItem)=>{
   seccionProductos.removeChild(contenedorProductos);
 
 }
+
+let botonBuscar = document.getElementById('btn-buscar');
+let encontrado = false;
+botonBuscar.addEventListener('click',()=>{
+    console.log(document.getElementById('buscador').value);
+    let busqueda = dataItems.filter(element => {
+      let cadena = element.title
+      let texto = document.getElementById('buscador').value;
+      //element.title == document.getElementById('buscador').value;
+      let posicion = cadena.indexOf(texto);
+      
+      if (posicion !== -1){
+        console.log(element.title);
+        encontrado = true;
+      }
+     
+    })
+    if(encontrado == false){
+      console.log('NO ENCONTRE LO QUE BUSCABA');
+    }
+});
+
 
