@@ -1,0 +1,60 @@
+h1{
+    margin-top:10px;
+    font-size: 30px;
+    font-family:Impact;
+    text-align: center ;
+    text-shadow: 3px 3px 2px rgb(235, 232, 232);
+}
+#seccion-productos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: baseline;
+    margin-top: 20px;
+}
+.row{
+    width: 20% ;
+    border:1px solid #198754;
+    margin:5px;
+}
+.btn-compra{
+    width:60%;
+    height: 30px;
+    margin-left: 12px;
+    margin-bottom: 10px;
+    background-color:#d9f1b9; ;
+    border-color: #198754;
+}
+.btn :hover{
+    background-color: #198754;
+    cursor: pointer;
+}
+.descripcionProducto{
+    height: 200px;
+    text-align: justify;
+}
+@media screen and (max-width: 940px) {
+    .row{
+        width:30%
+    }
+    .row img{
+        width: 100%;
+    }
+    
+    .descripcionProducto{
+        font-size:12px;
+        height:30%
+    }
+}
+@media screen and (max-width: 480px) {
+    .row{
+        width:100%
+    }
+    .row img{
+        width: 100%;
+    }
+    .descripcionProducto{
+        font-size:12px;
+        height:30%
+    }
+}
