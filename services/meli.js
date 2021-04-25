@@ -25,12 +25,23 @@ let items = fetch("https://api.mercadolibre.com/sites/MLM/search?category=MLM430
 .then(response => {
     response.json().then(
       response =>{
-          console.log(response);
+          //console.log(response);
           dataItems = response.results;
           console.log(dataItems);
 
           
          mostrarProductos(dataItems);
+         agregarEnCarrito(dataItems)
+      }
+    );
+}).catch(error => console.log(error));
+
+//nos muestra las tendencias en Computacion en Meli Mexico
+let tendencias = fetch("https://api.mercadolibre.com/trends/MLM/MLM1648")
+.then(response => {
+    response.json().then(
+      response =>{
+          console.log(response);
       }
     );
 }).catch(error => console.log(error));
@@ -62,9 +73,10 @@ const fragment=document.createDocumentFragment()
 const mostrarProductos=(datosItem)=>{  
   datosItem.forEach((producto,index )=> {
 
-     
+        
         let i=index;
         //console.log(i)
+        
         let imagen=document.createElement('img')
         imagen.setAttribute('src',producto.thumbnail)
         let titulo=document.createElement('h5')
@@ -73,10 +85,11 @@ const mostrarProductos=(datosItem)=>{
         descripcion.textContent=`${producto.title}`
         descripcion.className='descripcionProducto'
         let btnComprar=document.createElement('button')
-        btnComprar.dataset.id=producto.id
+        btnComprar.id=producto.id
         btnComprar.className='btn btn-primary btn-compra'
         btnComprar.textContent='Comprar'
         let clone= contenedorProductos.cloneNode(true)
+        clone.id=i+1;
         clone.appendChild(imagen)
         clone.appendChild(titulo);
         clone.appendChild(descripcion)
@@ -92,12 +105,11 @@ const mostrarProductos=(datosItem)=>{
         console.log(template.textContent=producto.title)
         const clone=template.cloneNode(true)
         fragment.appendChild(clone)*/
-
+        
     
   });
   seccionProductos.appendChild(fragment)
   seccionProductos.removeChild(contenedorProductos);
 
 }
-
 

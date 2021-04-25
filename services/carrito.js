@@ -23,10 +23,28 @@ class Carrito {
 
 let Compra = new Carrito();
 
-Compra.meterArticulos('ROPA');
+/*Compra.meterArticulos('ROPA');
 Compra.meterArticulos('ZAPATOS');
 Compra.meterArticulos('TELEFONO');
 
-Compra.sacarArticulos('ZAPATOS');
+Compra.sacarArticulos('ZAPATOS');*/
+
+const agregarEnCarrito=()=>{
+  
+  const botones=document.getElementsByClassName('btn-compra')
+    for(let i=0;i<botones.length;i++){
+      botones[i].addEventListener('click',()=>{
+        if(articulos.find(producto=>producto==(botones[i].id))){
+            Compra.sacarArticulos(botones[i].id)
+        }
+        else{
+          Compra.meterArticulos(botones[i].id)
+        }
+        
+        //const product=datosItem.find(producto=>producto.id===(botones[i].id))
+        console.log('el id es='+ botones[i].id)
+      })
+    }
+}
 
 
