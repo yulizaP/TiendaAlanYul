@@ -22,10 +22,11 @@ h1{
     height: 30px;
     margin-left: 12px;
     margin-bottom: 10px;
-    background-color:#d9f1b9; ;
-    border-color: #198754;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.btn :hover{
+.btn-compra:hover{
     background-color: #198754;
     cursor: pointer;
 }
@@ -33,6 +34,7 @@ h1{
     height: 200px;
     text-align: justify;
 }
+
 @media screen and (max-width: 940px) {
     .row{
         width:30%

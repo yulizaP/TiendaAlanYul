@@ -45,15 +45,26 @@ let items = fetch("https://api.mercadolibre.com/sites/MLM/search?category=MLM430
     console.log("error")
   }
 }*/
+let contenedorProductos=document.createElement('div');
+
+contenedorProductos.id='contenedor-productos'
+contenedorProductos.className='row'
 
 const seccionProductos=document.getElementById("seccion-productos")
-const contenedorProductos=document.getElementById("contenedor-productos")
+seccionProductos.appendChild(contenedorProductos);
+contenedorProductos=document.getElementById("contenedor-productos")
 const fragment=document.createDocumentFragment()
+
+
+
+
 
 const mostrarProductos=(datosItem)=>{  
   datosItem.forEach((producto,index )=> {
+
+     
         let i=index;
-        console.log(i)
+        //console.log(i)
         let imagen=document.createElement('img')
         imagen.setAttribute('src',producto.thumbnail)
         let titulo=document.createElement('h5')
@@ -63,7 +74,7 @@ const mostrarProductos=(datosItem)=>{
         descripcion.className='descripcionProducto'
         let btnComprar=document.createElement('button')
         btnComprar.dataset.id=producto.id
-        btnComprar.className='btn-compra'
+        btnComprar.className='btn btn-primary btn-compra'
         btnComprar.textContent='Comprar'
         let clone= contenedorProductos.cloneNode(true)
         clone.appendChild(imagen)
@@ -74,7 +85,7 @@ const mostrarProductos=(datosItem)=>{
         
         
         fragment.appendChild(clone)
-        console.log(fragment)
+        //console.log(fragment)
 
         
        /* template.textContent=producto.title
@@ -85,6 +96,7 @@ const mostrarProductos=(datosItem)=>{
     
   });
   seccionProductos.appendChild(fragment)
+  seccionProductos.removeChild(contenedorProductos);
 
 }
 
