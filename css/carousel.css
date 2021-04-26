@@ -4,6 +4,9 @@
 }
 
 .w-100{
-    width: 100% !important;
+    width: 50% !important;
     height: 400px;
+}
+#img1 #img2 #img3{
+    align-self: center;
 }

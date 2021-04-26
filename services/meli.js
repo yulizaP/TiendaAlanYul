@@ -30,9 +30,9 @@ let items = fetch("https://api.mercadolibre.com/sites/MLM/search?category=MLM430
       response =>{
           //console.log(response);
           dataItems = response.results;
-          //console.log(dataItems);
-          
+          console.log(dataItems);
          mostrarProductos(dataItems);
+         mejorVendido(dataItems);
         
       }
     );
@@ -115,6 +115,8 @@ const mostrarProductos=(datosItem)=>{
 
 }
 
+//buscador
+
 let botonBuscar = document.getElementById('btn-buscar');
 let encontrado = false;
 botonBuscar.addEventListener('click',()=>{
@@ -123,8 +125,7 @@ botonBuscar.addEventListener('click',()=>{
       let cadena = element.title
       let texto = document.getElementById('buscador').value;
       //element.title == document.getElementById('buscador').value;
-      let posicion = cadena.indexOf(texto);
-      
+      let posicion = cadena.indexOf(texto)
       if (posicion !== -1){
         console.log(element.title);
         encontrado = true;
@@ -135,5 +136,21 @@ botonBuscar.addEventListener('click',()=>{
       console.log('NO ENCONTRE LO QUE BUSCABA');
     }
 });
+
+//obtenr mejor vendidos 
+
+const mejorVendido=(tendencia)=>{
+  console.log(tendencia[0].thumbnail)
+  const itemCarrusel1=document.getElementById('img1')
+  itemCarrusel1.setAttribute('src',tendencia[0].thumbnail)
+  const itemCarrusel2=document.getElementById('img2')
+  itemCarrusel2.setAttribute('src',tendencia[15].thumbnail)
+  const itemCarrusel3=document.getElementById('img3')
+  itemCarrusel3.setAttribute('src',tendencia[5].thumbnail)
+ 
+  
+}
+
+
 
 
