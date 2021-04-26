@@ -42,7 +42,7 @@ let tendencias = fetch("https://api.mercadolibre.com/trends/MLM/MLM1648")
 .then(response => {
     response.json().then(
       response =>{
-          console.log(response);
+          //console.log(response);
       }
     );
 }).catch(error => console.log(error));
