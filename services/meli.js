@@ -21,6 +21,9 @@ let categorie = fetch("https://api.mercadolibre.com/categories/MLM1648")
 }).catch(error => console.log(error));
 
 //Nos muestra los items de Computacion en Meli Mexico
+
+let dataItems;
+
 let items = fetch("https://api.mercadolibre.com/sites/MLM/search?category=MLM430687")
 .then(response => {
     response.json().then(
@@ -28,11 +31,17 @@ let items = fetch("https://api.mercadolibre.com/sites/MLM/search?category=MLM430
           //console.log(response);
           dataItems = response.results;
           console.log(dataItems);
+<<<<<<< HEAD
 
           
          mostrarProductos(dataItems)
          agregarEnCarrito(dataItems)
          mejorVendido(dataItems)
+=======
+         mostrarProductos(dataItems);
+         mejorVendido(dataItems);
+        
+>>>>>>> 4656b657b613808c2fbd1974b0e0d27d6735df93
       }
     );
 }).catch(error => console.log(error));
@@ -88,7 +97,7 @@ const mostrarProductos=(datosItem)=>{
         let btnComprar=document.createElement('button')
         btnComprar.id=producto.id
         btnComprar.className='btn btn-primary btn-compra'
-        btnComprar.textContent='Comprar'
+        btnComprar.textContent='AGREGAR'
         let clone= contenedorProductos.cloneNode(true)
         clone.id=i+1;
         clone.appendChild(imagen)
@@ -135,6 +144,10 @@ botonBuscar.addEventListener('click',()=>{
       console.log('NO ENCONTRE LO QUE BUSCABA');
     }
 });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4656b657b613808c2fbd1974b0e0d27d6735df93
 //obtenr mejor vendidos 
 
 const mejorVendido=(tendencia)=>{
@@ -145,5 +158,15 @@ const mejorVendido=(tendencia)=>{
   itemCarrusel2.setAttribute('src',tendencia[15].thumbnail)
   const itemCarrusel3=document.getElementById('img3')
   itemCarrusel3.setAttribute('src',tendencia[5].thumbnail)
+<<<<<<< HEAD
   
 }
+=======
+ 
+  
+}
+
+
+
+
+>>>>>>> 4656b657b613808c2fbd1974b0e0d27d6735df93
