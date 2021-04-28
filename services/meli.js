@@ -30,8 +30,8 @@ let items = fetch("https://api.mercadolibre.com/sites/MLM/search?category=MLM430
 
           
          mostrarProductos(dataItems);
-         agregarEnCarrito(dataItems)
-         mejorVendido(dataItems)
+         agregarEnCarrito(dataItems);
+         mejorVendido(dataItems);
       }
     );
 }).catch(error => console.log(error));
@@ -56,7 +56,8 @@ seccionProductos.appendChild(contenedorProductos);
 contenedorProductos=document.getElementById("contenedor-productos")
 const fragment=document.createDocumentFragment()
 
-const mostrarProductos=(datosItem)=>{  
+const mostrarProductos=(datosItem)=>{
+  datosItem = datosItem.slice(0, 12);  
   datosItem.forEach((producto,index )=> {
 
         
@@ -122,7 +123,12 @@ const mejorVendido=(tendencia)=>{
   const itemCarrusel3=document.getElementById('img3')
   itemCarrusel3.setAttribute('src',tendencia[5].thumbnail)
  
-  
 }
+
+
+
+let paginacion = document.getElementById('paginacion1');
+paginacion.className = 'paginacion1';
+
 
 /* Guardado */
