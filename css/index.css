@@ -41,8 +41,12 @@ h1{
     padding-top: 20px;
 }
 
-.paginacion1{
-   background-color: red !important;
+#busqueda{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: baseline;
+    margin-top: 20px;
 }
 
 

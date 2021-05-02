@@ -8,6 +8,7 @@ let categories = fetch("https://api.mercadolibre.com/sites/MLM/categories")
     );
 }).catch(error => console.log(error));
 
+
 // Nos muestra la categoria Computacion en Meli Mexico
 let categorie = fetch("https://api.mercadolibre.com/categories/MLM1648")
 .then(response => {
@@ -20,7 +21,7 @@ let categorie = fetch("https://api.mercadolibre.com/categories/MLM1648")
 
 //Nos muestra los items de Computacion en Meli Mexico
 let dataItems;
-let items = fetch("https://api.mercadolibre.com/sites/MLM/search?category=MLM430687")
+let items = fetch('https://api.mercadolibre.com/sites/MLM/search?category=MLM430687')
 .then(response => {
     response.json().then(
       response =>{
@@ -48,22 +49,27 @@ let tendencias = fetch("https://api.mercadolibre.com/trends/MLM/MLM1648")
 
 let contenedorProductos=document.createElement('div');
 
+
 contenedorProductos.id='contenedor-productos'
 contenedorProductos.className='row card'
+
 
 const seccionProductos=document.getElementById("seccion-productos")
 seccionProductos.appendChild(contenedorProductos);
 contenedorProductos=document.getElementById("contenedor-productos")
 const fragment=document.createDocumentFragment()
 
+
 const mostrarProductos=(datosItem)=>{
-  datosItem = datosItem.slice(0, 12);  
+  //datosItem = datosItem.slice(0, 12);  
   datosItem.forEach((producto,index )=> {
 
         
         let i=index;
         //console.log(i)
-        
+        let contenedorBotones=document.createElement('div');
+        contenedorBotones.id='contenedor-botones'
+        contenedorBotones.className='botones'
         let imagen=document.createElement('img')
         imagen.setAttribute('src',producto.thumbnail)
         imagen.setAttribute('class','card-img-top')
@@ -77,12 +83,21 @@ const mostrarProductos=(datosItem)=>{
         btnComprar.id=producto.id
         btnComprar.className='btn btn-primary btn-compra'
         btnComprar.textContent='Comprar'
+
+        let btnAgregar=document.createElement('button')
+        btnAgregar.id=producto.id
+        btnAgregar.className='btn btn-primary btn-compra'
+        btnAgregar.textContent='AGREGAR AL CARRITO'
+
         let clone= contenedorProductos.cloneNode(true)
+        //let clone2= contenedorBotones.cloneNode(true)
         clone.id=i+1;
-        clone.appendChild(imagen)
+        clone.appendChild(imagen);
         clone.appendChild(titulo);
-        clone.appendChild(descripcion)
-        clone.appendChild(btnComprar)
+        clone.appendChild(descripcion);
+        clone.appendChild(contenedorBotones);
+        clone.appendChild(btnComprar);
+        //clone2.appendChild(btnAgregar); */
         fragment.appendChild(clone)
         //console.log(fragment)
   });
@@ -95,22 +110,44 @@ const mostrarProductos=(datosItem)=>{
 
 
 let botonBuscar = document.getElementById('btn-buscar');
-let encontrado = false;
+
+const resultadoBusqueda=document.getElementById('busqueda')
+
+
 botonBuscar.addEventListener('click',()=>{
+  let encontrado = false;
+  resultadoBusqueda.innerHTML=""
     console.log(document.getElementById('buscador').value);
     let busqueda = dataItems.filter(element => {
-      let cadena = element.title
-      let texto = document.getElementById('buscador').value;
+      let cadena = element.title.toLowerCase()
+      let texto = document.getElementById('buscador').value.toLowerCase()
       let posicion = cadena.indexOf(texto);
       if (posicion !== -1){
-        console.log(element.title);
+        seccionProductos.style.display='none'
+        console.log(element.id,element.title);
+        traerTarjeta(element)//imprime tarjeta en pagina
         encontrado = true;
       }
-    })
-    if(encontrado == false){
-      console.log('NO ENCONTRE LO QUE BUSCABA');
+    }) 
+    if(encontrado !== true ){
+      seccionProductos.style.display='none'
+      console.log('entre')
+      resultadoBusqueda.innerHTML=`
+      <h1>NO ENCONTRAMOS LO QUE BUSCABAS</h1>`
     }
 });
+
+//funcion para obtener la tarjeta con el producto segun la busqueda e imprimirla en la pagina
+const botones=document.getElementsByClassName('btn-compra')
+const carta=document.getElementsByClassName('row')
+const traerTarjeta=(elemento)=>{
+  for(let i=0;i<botones.length;i++){
+    if(botones[i].id==elemento.id){
+      fragment.appendChild(carta[i])
+    }  
+  }
+  resultadoBusqueda.appendChild(fragment)
+}
 
 //obtenr mejor vendidos 
 
@@ -127,8 +164,8 @@ const mejorVendido=(tendencia)=>{
 
 
 
-let paginacion = document.getElementById('paginacion1');
-paginacion.className = 'paginacion1';
+/* let paginacion = document.getElementById('paginacion1');
+paginacion.className = 'paginacion1'; */
 
 
 /* Guardado */

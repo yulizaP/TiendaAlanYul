@@ -1,0 +1,20 @@
+body{
+    background-color: white !important;
+    background: linear-gradient(to bottom right, blue, white) !important;
+}
+.contenedorMain{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+.logotipo{
+    flex: 1;
+}
+.login{
+    flex: 1;
+    margin: 0px 40px;
+    /* background-color: rgba(0, 0, 0, 0.1);
+    border: solid 1px rgba(0, 0, 0, 0.8); */
+}
+
