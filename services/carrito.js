@@ -1,4 +1,5 @@
 let articulos = new Array();
+let numeroArticulos;
 
 class Carrito {
   constructor(articulo, meterArticulos, sacarArticulos){
@@ -11,12 +12,14 @@ class Carrito {
 
   meterArticulos(articulo) {
     articulos.push(articulo);
+    numeroArticulos = articulos.length;
     return console.log(articulos);
 
   }
   
   sacarArticulos(articulo) {
     articulos = articulos.filter(element => element !== articulo);
+    numeroArticulos = articulos.length;
     return console.log(articulos);
   }
 }
@@ -35,6 +38,7 @@ const agregarEnCarrito=()=>{
       botones[i].addEventListener('click',()=>{
         if(articulos.find(producto=>producto==(botones[i].id))){
             Compra.sacarArticulos(botones[i].id)
+            
         }
         else{
           Compra.meterArticulos(botones[i].id)
@@ -46,3 +50,7 @@ const agregarEnCarrito=()=>{
     }
 }
 /* Guardado */
+
+//CHECKOUT
+/* let productos=document.getElementById("numeroProductos");
+productos.textContent= numeroArticulos; */
