@@ -155,10 +155,13 @@ const mejorVendido=(tendencia)=>{
   
   const itemCarrusel1=document.getElementById('img1')
   itemCarrusel1.setAttribute('src',tendencia[0].thumbnail)
+  const textoCarrusel=document.getElementById('precio-carrusel1').textContent=`$${tendencia[0].price}`
   const itemCarrusel2=document.getElementById('img2')
   itemCarrusel2.setAttribute('src',tendencia[15].thumbnail)
+  const textoCarrusel2=document.getElementById('precio-carrusel2').textContent=`$${tendencia[15].price}`
   const itemCarrusel3=document.getElementById('img3')
   itemCarrusel3.setAttribute('src',tendencia[5].thumbnail)
+  const textoCarrusel3=document.getElementById('precio-carrusel3').textContent=`$${tendencia[5].price}`
  
 }
 

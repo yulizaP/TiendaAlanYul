@@ -29,7 +29,9 @@ h1{
     align-items: center;
     justify-content: center;
 }
-
+.card{
+    flex-wrap: nowrap;
+}
 .descripcionProducto{
     height: 200px;
     text-align: justify;
