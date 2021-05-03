@@ -1,0 +1,40 @@
+.contenedorRegistro{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    
+  
+}
+.logo-registro{
+    width:100%;
+    height: 100%;
+}
+.logotipo-registro{
+    width:20%;
+    height: 150px;
+}
+.registro{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-left: 20px;
+}
+.form-registro{
+    width: 80% !important;
+    justify-content: space-between;
+}
+.input-registro{
+    width: 49% !important;
+}
+.mb-3{
+    width: 100%;
+}
+#crear-cuenta{
+    margin-top:1%;
+    display: none;
+}
+#iniciar-sesion{
+    margin-top: 5%;
+}
