@@ -1,9 +1,27 @@
 #seccion-carrusel{
     width: 100%; 
-    
 }
 
 .w-100{
-    width: 100% !important;
+    width: 50% !important;
     height: 400px;
+<<<<<<< HEAD
+    z-index: 1;
+}
+
+.item-contenido{
+    display: flex;
+    flex-direction: row;
+   justify-content: center;
+}
+.carousel-indicators [data-bs-target] {
+    background-color: black !important;
+}
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    background-color:rgba(0, 0, 0,0.3);
+=======
+}
+#img1 #img2 #img3{
+    align-self: center;
+>>>>>>> 4656b657b613808c2fbd1974b0e0d27d6735df93
 }

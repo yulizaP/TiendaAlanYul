@@ -21,16 +21,37 @@ let categorie = fetch("https://api.mercadolibre.com/categories/MLM1648")
 }).catch(error => console.log(error));
 
 //Nos muestra los items de Computacion en Meli Mexico
+
+let dataItems;
+
 let items = fetch("https://api.mercadolibre.com/sites/MLM/search?category=MLM430687")
 .then(response => {
     response.json().then(
       response =>{
-          console.log(response);
+          //console.log(response);
           dataItems = response.results;
           console.log(dataItems);
+<<<<<<< HEAD
 
           
+         mostrarProductos(dataItems)
+         agregarEnCarrito(dataItems)
+         mejorVendido(dataItems)
+=======
          mostrarProductos(dataItems);
+         mejorVendido(dataItems);
+        
+>>>>>>> 4656b657b613808c2fbd1974b0e0d27d6735df93
+      }
+    );
+}).catch(error => console.log(error));
+
+//nos muestra las tendencias en Computacion en Meli Mexico
+let tendencias = fetch("https://api.mercadolibre.com/trends/MLM/MLM1648")
+.then(response => {
+    response.json().then(
+      response =>{
+          //console.log(response);
       }
     );
 }).catch(error => console.log(error));
@@ -45,15 +66,27 @@ let items = fetch("https://api.mercadolibre.com/sites/MLM/search?category=MLM430
     console.log("error")
   }
 }*/
+let contenedorProductos=document.createElement('div');
+
+contenedorProductos.id='contenedor-productos'
+contenedorProductos.className='row'
 
 const seccionProductos=document.getElementById("seccion-productos")
-const contenedorProductos=document.getElementById("contenedor-productos")
+seccionProductos.appendChild(contenedorProductos);
+contenedorProductos=document.getElementById("contenedor-productos")
 const fragment=document.createDocumentFragment()
+
+
+
+
 
 const mostrarProductos=(datosItem)=>{  
   datosItem.forEach((producto,index )=> {
+
+        
         let i=index;
-        console.log(i)
+        //console.log(i)
+        
         let imagen=document.createElement('img')
         imagen.setAttribute('src',producto.thumbnail)
         let titulo=document.createElement('h5')
@@ -62,10 +95,11 @@ const mostrarProductos=(datosItem)=>{
         descripcion.textContent=`${producto.title}`
         descripcion.className='descripcionProducto'
         let btnComprar=document.createElement('button')
-        btnComprar.dataset.id=producto.id
-        btnComprar.className='btn-compra'
-        btnComprar.textContent='Comprar'
+        btnComprar.id=producto.id
+        btnComprar.className='btn btn-primary btn-compra'
+        btnComprar.textContent='AGREGAR'
         let clone= contenedorProductos.cloneNode(true)
+        clone.id=i+1;
         clone.appendChild(imagen)
         clone.appendChild(titulo);
         clone.appendChild(descripcion)
@@ -74,18 +108,65 @@ const mostrarProductos=(datosItem)=>{
         
         
         fragment.appendChild(clone)
-        console.log(fragment)
+        //console.log(fragment)
 
         
        /* template.textContent=producto.title
         console.log(template.textContent=producto.title)
         const clone=template.cloneNode(true)
         fragment.appendChild(clone)*/
-
+        
     
   });
   seccionProductos.appendChild(fragment)
+  seccionProductos.removeChild(contenedorProductos);
 
 }
 
+//buscador
 
+let botonBuscar = document.getElementById('btn-buscar');
+let encontrado = false;
+botonBuscar.addEventListener('click',()=>{
+    console.log(document.getElementById('buscador').value);
+    let busqueda = dataItems.filter(element => {
+      let cadena = element.title
+      let texto = document.getElementById('buscador').value;
+      //element.title == document.getElementById('buscador').value;
+      let posicion = cadena.indexOf(texto)
+      if (posicion !== -1){
+        console.log(element.title);
+        encontrado = true;
+      }
+     
+    })
+    if(encontrado == false){
+      console.log('NO ENCONTRE LO QUE BUSCABA');
+    }
+});
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4656b657b613808c2fbd1974b0e0d27d6735df93
+//obtenr mejor vendidos 
+
+const mejorVendido=(tendencia)=>{
+  console.log(tendencia[0].thumbnail)
+  const itemCarrusel1=document.getElementById('img1')
+  itemCarrusel1.setAttribute('src',tendencia[0].thumbnail)
+  const itemCarrusel2=document.getElementById('img2')
+  itemCarrusel2.setAttribute('src',tendencia[15].thumbnail)
+  const itemCarrusel3=document.getElementById('img3')
+  itemCarrusel3.setAttribute('src',tendencia[5].thumbnail)
+<<<<<<< HEAD
+  
+}
+=======
+ 
+  
+}
+
+
+
+
+>>>>>>> 4656b657b613808c2fbd1974b0e0d27d6735df93
