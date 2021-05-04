@@ -1,5 +1,5 @@
 let articulos = new Array();
-let numeroArticulos;
+let numeroArticulos = 0;
 
 class Carrito {
   constructor(articulo, meterArticulos, sacarArticulos){
@@ -13,6 +13,14 @@ class Carrito {
   meterArticulos(articulo) {
     articulos.push(articulo);
     numeroArticulos = articulos.length;
+    localStorage.setItem("Articulos", JSON.stringify(articulos));
+    articulos = JSON.parse(localStorage.getItem("Articulos"));
+    localStorage.setItem("cantidad", numeroArticulos);
+    numeroArticulos = localStorage.getItem("cantidad");
+
+    let productos=document.getElementById("numeroProductos");
+    productos.textContent = numeroArticulos
+
     return console.log(articulos);
 
   }
@@ -20,6 +28,13 @@ class Carrito {
   sacarArticulos(articulo) {
     articulos = articulos.filter(element => element !== articulo);
     numeroArticulos = articulos.length;
+    localStorage.setItem("Articulos", articulos);
+    articulos = localStorage.getItem("Articulos");
+    localStorage.setItem("cantidad", numeroArticulos);
+    numeroArticulos = localStorage.getItem("cantidad");
+
+    
+
     return console.log(articulos);
   }
 }
@@ -52,5 +67,8 @@ const agregarEnCarrito=()=>{
 /* Guardado */
 
 //CHECKOUT
-/* let productos=document.getElementById("numeroProductos");
-productos.textContent= numeroArticulos; */
+let productos=document.getElementById("numeroProductos");
+productos.textContent = numeroArticulos
+  
+
+
