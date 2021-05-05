@@ -1,3 +1,5 @@
+
+
 // Nos muestra las categorias de Meli Mexico
 let categories = fetch("https://api.mercadolibre.com/sites/MLM/categories")
 .then(response => {

@@ -1,0 +1,18 @@
+[
+    {
+      "id": 1,
+      "nombre": "Leanne ",
+      "apellido":"Graham",
+      "nombre de usuario": "Bret",
+      "email": "Sincere@april.biz",
+      "password":"1234"
+    },
+    {
+        "id": 2,
+        "nombre": "Alan Gibran",
+        "apellido":"Gibran",
+        "nombre de usuario": "Alan",
+        "email": "alan@g.com",
+        "password":"1235"
+      }
+    ]

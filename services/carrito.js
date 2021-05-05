@@ -18,8 +18,9 @@ class Carrito {
     localStorage.setItem("cantidad", numeroArticulos);
     numeroArticulos = localStorage.getItem("cantidad");
 
-    let productos=document.getElementById("numeroProductos");
-    productos.textContent = numeroArticulos
+    //let productos=document.getElementById("numeroProductos");
+    //productos.textContent =`${numeroArticulos}` 
+    console.log(numeroArticulos)
 
     return console.log(articulos);
 
@@ -33,7 +34,7 @@ class Carrito {
     localStorage.setItem("cantidad", numeroArticulos);
     numeroArticulos = localStorage.getItem("cantidad");
 
-    
+   
 
     return console.log(articulos);
   }
@@ -67,8 +68,11 @@ const agregarEnCarrito=()=>{
 /* Guardado */
 
 //CHECKOUT
+if(window.location.href.indexOf('checkout') > -1){
 let productos=document.getElementById("numeroProductos");
-productos.textContent = numeroArticulos
+numeroArticulos = localStorage.getItem("cantidad");
+productos.textContent =`${numeroArticulos}`  
+}
   
 
 
