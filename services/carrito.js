@@ -1,5 +1,9 @@
 let articulos = new Array();
 let numeroArticulos = 0;
+let dataArticulos = new Array();
+
+let articulosEnCarro = new Array();
+
 
 class Carrito {
   constructor(articulo, meterArticulos, sacarArticulos){
@@ -11,7 +15,25 @@ class Carrito {
   }
 
   meterArticulos(articulo) {
- 
+
+    
+    
+    dataArticulos = JSON.parse(localStorage.getItem("DATA"));
+    dataArticulos.forEach(element => {
+      /* articulos.find(element2 =>{
+        if(element2 === element.id){
+          articulosEnCarro.push(element);
+          console.log(articulosEnCarro);
+        }
+      }) */
+      if(articulos.find(element2 => element2 === element.id)){
+        articulosEnCarro.push(element);
+        console.log(articulosEnCarro);
+      }
+      //console.log(element);
+      
+    })
+    console.log(dataArticulos);
     articulos.push(articulo);
     numeroArticulos = articulos.length;
     localStorage.setItem("Articulos", JSON.stringify(articulos));
@@ -22,7 +44,7 @@ class Carrito {
     //let productos=document.getElementById("numeroProductos");
     //productos.textContent =`${numeroArticulos}` 
     console.log(numeroArticulos)
-
+    
     return console.log(articulos);
 
   }
@@ -43,10 +65,6 @@ class Carrito {
 
 let Compra = new Carrito();
 
-/*Compra.meterArticulos('ROPA');
-Compra.meterArticulos('ZAPATOS');
-Compra.meterArticulos('TELEFONO');
-Compra.sacarArticulos('ZAPATOS');*/
 
 const agregarEnCarrito=()=>{
   

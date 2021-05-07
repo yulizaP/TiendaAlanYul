@@ -21,14 +21,14 @@ let categorie = fetch("https://api.mercadolibre.com/categories/MLM1648")
 
 //Nos muestra los items de Computacion en Meli Mexico
 let dataItems;
-let items = fetch('https://api.mercadolibre.com/sites/MLM/search?category=MLM430687')
+let items = fetch("https://api.mercadolibre.com/sites/MLM/search?category=MLM430687")
 .then(response => {
     response.json().then(
       response =>{
           //console.log(response);
           dataItems = response.results;
           //console.log(dataItems);
-
+          localStorage.setItem("DATA", JSON.stringify(dataItems));
           
          mostrarProductos(dataItems);
          agregarEnCarrito(dataItems);
@@ -83,11 +83,6 @@ const mostrarProductos=(datosItem)=>{
         btnComprar.id=producto.id
         btnComprar.className='btn btn-primary btn-compra'
         btnComprar.textContent='Comprar'
-
-        let btnAgregar=document.createElement('button')
-        btnAgregar.id=producto.id
-        btnAgregar.className='btn btn-primary btn-compra'
-        btnAgregar.textContent='AGREGAR AL CARRITO'
 
         let clone= contenedorProductos.cloneNode(true)
         //let clone2= contenedorBotones.cloneNode(true)
