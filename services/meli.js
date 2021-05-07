@@ -1,5 +1,3 @@
-
-
 // Nos muestra las categorias de Meli Mexico
 let categories = fetch("https://api.mercadolibre.com/sites/MLM/categories")
 .then(response => {
@@ -68,7 +66,7 @@ const mostrarProductos=(datosItem)=>{
 
         
         let i=index;
-        //console.log(i)
+        //console.log(producto)
         let contenedorBotones=document.createElement('div');
         contenedorBotones.id='contenedor-botones'
         contenedorBotones.className='botones'
@@ -166,7 +164,6 @@ const mejorVendido=(tendencia)=>{
   const textoCarrusel3=document.getElementById('precio-carrusel3').textContent=`$${tendencia[5].price}`
  
 }
-
 
 
 /* let paginacion = document.getElementById('paginacion1');

@@ -11,6 +11,7 @@ class Carrito {
   }
 
   meterArticulos(articulo) {
+ 
     articulos.push(articulo);
     numeroArticulos = articulos.length;
     localStorage.setItem("Articulos", JSON.stringify(articulos));
@@ -29,8 +30,8 @@ class Carrito {
   sacarArticulos(articulo) {
     articulos = articulos.filter(element => element !== articulo);
     numeroArticulos = articulos.length;
-    localStorage.setItem("Articulos", articulos);
-    articulos = localStorage.getItem("Articulos");
+    localStorage.setItem("Articulos", JSON.stringify(articulos));
+    articulos = JSON.parse(localStorage.getItem("Articulos"));
     localStorage.setItem("cantidad", numeroArticulos);
     numeroArticulos = localStorage.getItem("cantidad");
 
@@ -55,9 +56,10 @@ const agregarEnCarrito=()=>{
         if(articulos.find(producto=>producto==(botones[i].id))){
             Compra.sacarArticulos(botones[i].id)
             
+            
         }
         else{
-          Compra.meterArticulos(botones[i].id)
+           Compra.meterArticulos(botones[i].id)
         }
         
         //const product=datosItem.find(producto=>producto.id===(botones[i].id))
