@@ -1,13 +1,13 @@
-document.addEventListener('DOMContentLoaded',()=>{
+/* document.addEventListener('DOMContentLoaded',()=>{
     usuariosR()
-})
+}) */
 let crearCuenta=document.getElementById('crearCuenta')
 let seccionLogin=document.getElementById('iniciar-sesion')
 let seccionRegistro=document.getElementById('crear-cuenta')
 seccionLogin.style.display='block'
-let usuariosR = async()=>{
+/* let usuariosR = async()=>{
     try {
-        const res = await fetch('../services/usuarios.json')
+        const res = await fetch('usuarios.json')
         const data= await res.json()
         console.log(data)
         if(seccionLogin.style.display=='block'){
@@ -16,7 +16,7 @@ let usuariosR = async()=>{
     } catch (error) {
         
     }
-}
+} */
 
 
 

@@ -3,7 +3,7 @@ const app=express();
 require('dotenv').config();
 
 const cors = require('cors');
-const midd = require('./midd/midd');
+const midd = require('./BACK/midd/midd');
 
 app.use(express.json());
 app.use(cors());
