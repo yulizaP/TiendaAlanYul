@@ -1,19 +1,34 @@
-const server = require('http');
+const express=require('express');
+const app=express();
 require('dotenv').config();
 
-async function request(req,res){
-   
-    res.writeHead(200,{'Content-type': 'text/html'});
-    res.write(`servidor iniciado en http://${process.env.HOST}:${process.env.PORT}`)
-    res.end()
-}
+const cors = require('cors');
+const midd = require('./midd/midd');
 
-const  servidor = server.createServer(request);
-servidor.listen(process.env.PORT, process.env.HOST, () => {
-    console.log(`servidor iniciado en http://${process.env.HOST}:${process.env.PORT}`);
+app.use(express.json());
+app.use(cors());
+
+app.use(midd.limiter);
+
+app.listen(process.env.PORT,()=>{
+    console.log(`servidor inicializado en http://${process.env.HOST}:${process.env.PORT}`);
 });
 
-module.exports.getDatos = function (){
-        URL = process.env.categorieItemsURL
-    return URL;
-}
+app.use((err, req, res, next)=> {
+    console.log(err);
+    if (!err){
+        return next();
+    }
+
+    return res.status(500).json('Se produjo un error inesperado, intente nuevamente')
+});
+
+let direccion = app.get('/miAPI', cors(midd.corsOptions), async function(req,res){
+    let miApi={
+        "url": process.env.categorieItemsURL
+    }
+
+    res.send(miApi.url)
+});
+
+module.exports = {direccion}

@@ -67,9 +67,6 @@ const mostrarProductos=(datosItem)=>{
         
         let i=index;
         //console.log(producto)
-        let contenedorBotones=document.createElement('div');
-        contenedorBotones.id='contenedor-botones'
-        contenedorBotones.className='botones'
         let imagen=document.createElement('img')
         imagen.setAttribute('src',producto.thumbnail)
         imagen.setAttribute('class','card-img-top')
@@ -90,7 +87,6 @@ const mostrarProductos=(datosItem)=>{
         clone.appendChild(imagen);
         clone.appendChild(titulo);
         clone.appendChild(descripcion);
-        clone.appendChild(contenedorBotones);
         clone.appendChild(btnComprar);
         //clone2.appendChild(btnAgregar); */
         fragment.appendChild(clone)
