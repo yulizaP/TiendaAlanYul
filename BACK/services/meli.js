@@ -31,7 +31,7 @@ let items = fetch("https://api.mercadolibre.com/sites/MLM/search?category=MLM430
           localStorage.setItem("DATA", JSON.stringify(dataItems));
           
          mostrarProductos(dataItems);
-         agregarEnCarrito(dataItems);
+         agregarEnCarrito();
          mejorVendido(dataItems);
       }
     );
@@ -106,10 +106,12 @@ const resultadoBusqueda=document.getElementById('busqueda')
 
 
 botonBuscar.addEventListener('click',()=>{
+
   let encontrado = false;
   resultadoBusqueda.innerHTML=""
+  
     console.log(document.getElementById('buscador').value);
-    let busqueda = dataItems.filter(element => {
+      let busqueda = dataItems.filter(element => {
       let cadena = element.title.toLowerCase()
       let texto = document.getElementById('buscador').value.toLowerCase()
       let posicion = cadena.indexOf(texto);
@@ -117,9 +119,13 @@ botonBuscar.addEventListener('click',()=>{
         seccionProductos.style.display='none'
         console.log(element.id,element.title);
         traerTarjeta(element.id)//imprime tarjeta en pagina
+        
         encontrado = true;
       }
-    }) 
+    })
+     
+      //agregarEnCarrito();
+
     if(encontrado !== true ){
       seccionProductos.style.display='none'
       console.log('entre')
@@ -133,7 +139,7 @@ const botones=document.getElementsByClassName('btn-compra')
 const carta=document.getElementsByClassName('row')
 const traerTarjeta=(elemento)=>{
   for(let i=0;i<botones.length;i++){
-    if(botones[i].id==elemento){
+    if(botones[i].id == elemento){
       console.log(carta[i])
       fragment.appendChild(carta[i])
     } 

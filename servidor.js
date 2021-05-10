@@ -23,12 +23,22 @@ app.use((err, req, res, next)=> {
     return res.status(500).json('Se produjo un error inesperado, intente nuevamente')
 });
 
-let direccion = app.get('/miAPI', cors(midd.corsOptions), async function(req,res){
-    let miApi={
-        "url": process.env.categorieItemsURL
-    }
-
-    res.send(miApi.url)
+app.get('/miAPI', cors(midd.corsOptions), midd.controlApiKey, (req,res) => {
+  
+        try {
+            let miApi={
+                "url": process.env.categorieItemsURL
+                
+            }
+        
+            res.send(miApi.url)
+        }catch (error) {
+            console.log('Error desde el get del app')
+            console.log(error);
+            res.status(400).json(error.message)
+        }
 });
 
-module.exports = {direccion}
+
+
+

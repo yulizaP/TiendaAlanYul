@@ -1,6 +1,7 @@
 let articulos = new Array();
 let numeroArticulos = 0;
 let dataArticulos = new Array();
+let total = 0;
 dataArticulos = JSON.parse(localStorage.getItem("DATA"));
 
 
@@ -15,11 +16,6 @@ class Carrito {
 
   meterArticulos(articulo) {
 
-    
-    
-    
-    
-    
     articulos.push(articulo);
     numeroArticulos = articulos.length;
     localStorage.setItem("Articulos", JSON.stringify(articulos));
@@ -56,18 +52,23 @@ let Compra = new Carrito();
 const agregarEnCarrito=()=>{
   
   let botones=document.getElementsByClassName('btn-compra')
+  
   let carta=document.getElementsByClassName('row')
-    
-    for(let i=0;i<botones.length;i++){
-      botones[i].addEventListener('click',()=>{
-        if(articulos.find(producto=>producto===(botones[i].id))){
-            Compra.sacarArticulos(botones[i].id)
+  
+    for(let i=0; i<botones.length ;i++){
+      botones[i].addEventListener('click',(response)=>{
+        console.log(response);
+        if(articulos.find(producto=> producto === botones[i].id)){
+           
+            Compra.sacarArticulos(botones[i].id);
             
             
         }
         else{
-          
-           Compra.meterArticulos(botones[i].id)
+         
+       
+           Compra.meterArticulos(botones[i].id);
+
         }
         
         //const product=datosItem.find(producto=>producto.id===(botones[i].id))
@@ -120,11 +121,12 @@ console.log(articulos)
       
     })
     listaProductos.appendChild(fragment)
-    console.log(articulosEnCarro);
-    //articulosEnCarro.forEach((elemento,index)=>{
-      
-      
-    //})
+     articulosEnCarro.forEach(element => {
+       total = total + element.price;
+     })
+     console.log(total);
+    let aPagar = document.getElementById('totalPagar');
+    aPagar.textContent = `$${total}`;
     
     
     
@@ -132,7 +134,16 @@ console.log(articulos)
 
 
 
-
 }
+
+let buttonPagar = document.getElementById('finalizarCompra');
+buttonPagar.addEventListener('click', () =>{
+    Swal.fire('COMPRA REALIZADA!', 'Gracias, vuelve pronto!', 'success')
+    numeroArticulos = 0;
+    articulos = [];
+    localStorage.setItem("cantidad", numeroArticulos);
+    localStorage.setItem("Articulos", JSON.stringify(articulos));
+})
+
   
 
