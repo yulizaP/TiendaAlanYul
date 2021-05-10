@@ -1,23 +1,23 @@
 // Nos muestra las categorias de Meli Mexico
-let categories = fetch("https://api.mercadolibre.com/sites/MLM/categories")
+/* let categories = fetch("https://api.mercadolibre.com/sites/MLM/categories")
 .then(response => {
     response.json().then(
       response =>{
           //console.log(response);
       }
     );
-}).catch(error => console.log(error));
+}).catch(error => console.log(error)); */
 
 
 // Nos muestra la categoria Computacion en Meli Mexico
-let categorie = fetch("https://api.mercadolibre.com/categories/MLM1648")
+/* let categorie = fetch("https://api.mercadolibre.com/categories/MLM1648")
 .then(response => {
     response.json().then(
       response =>{
           //console.log(response);
       }
     );
-}).catch(error => console.log(error));
+}).catch(error => console.log(error)); */
 
 //Nos muestra los items de Computacion en Meli Mexico
 let dataItems;

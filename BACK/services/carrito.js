@@ -133,17 +133,17 @@ console.log(articulos)
   }
 
 
-
+  let buttonPagar = document.getElementById('finalizarCompra');
+  buttonPagar.addEventListener('click', () =>{
+      Swal.fire('COMPRA REALIZADA!', 'Gracias, vuelve pronto!', 'success')
+      numeroArticulos = 0;
+      articulos = [];
+      localStorage.setItem("cantidad", numeroArticulos);
+      localStorage.setItem("Articulos", JSON.stringify(articulos));
+  })
 }
 
-let buttonPagar = document.getElementById('finalizarCompra');
-buttonPagar.addEventListener('click', () =>{
-    Swal.fire('COMPRA REALIZADA!', 'Gracias, vuelve pronto!', 'success')
-    numeroArticulos = 0;
-    articulos = [];
-    localStorage.setItem("cantidad", numeroArticulos);
-    localStorage.setItem("Articulos", JSON.stringify(articulos));
-})
+
 
   
 
